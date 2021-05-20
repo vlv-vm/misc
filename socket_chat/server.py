@@ -16,7 +16,7 @@ def broadcast(message, source):
         if client[0] == source:
             pass
         else:
-            client[0].send(message.encode("ASCII"))
+            client[0].send(f"[{time.strftime('%H:%M',time.localtime())}] {message}".encode('ASCII'))
 
 def server_broadcast(message):
     for client in CLIENTS:
@@ -25,7 +25,7 @@ def server_broadcast(message):
 def client_handler(client, ip, port, nickname):
     while True:
         try:
-            message = f"[{nickname}]: " + client.recv(BUFFER).decode("ASCII")
+            message = f"{nickname}: {client.recv(BUFFER).decode('ASCII')}"
             broadcast(message, client)
         except ConnectionAbortedError:
             client.close()
