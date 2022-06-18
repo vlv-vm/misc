@@ -1,0 +1,12 @@
+html{
+    height: 100%;
+}
+body{
+    display:flex;
+    height: 100%;
+    align-items: center;
+}
+canvas{
+    margin: 0 auto;
+    height:80%;
+}
