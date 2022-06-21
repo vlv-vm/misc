@@ -5,15 +5,6 @@ canvas.height = 1000;
 const cellSize = 10;
 const row = canvas.width / cellSize;
 
-const button = document.querySelector("button");
-
-button.addEventListener("click", ()=>{
-    let newGrid = createGrid();
-    renderGrid(newGrid);
-    requestAnimationFrame(update)
-    update();
-});
-
 function createGrid(){
     let grid = new Array(row).fill(null);
     for(let i = 0; i < row;i++){
@@ -31,20 +22,18 @@ function renderGrid(grid){
             const cell = grid[i][j];
             ctx.beginPath();
             ctx.rect(j*cellSize, i*cellSize, cellSize, cellSize);
-            ctx.fillStyle = cell ? "purple" : "white";
+            ctx.fillStyle = cell ? "blue" : "white";
             ctx.fill();
             ctx.stroke();
         }
     }
 }
-
 /* 
 Any live cell with fewer than two live neighbours dies, as if by underpopulation.   
 Any live cell with two or three live neighbours lives on to the next generation.    
 Any live cell with more than three live neighbours dies, as if by overpopulation.   
 Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction. 
 */
-
 function nextGeneration(grid){
     
     let nextGenArr = grid.map(arr => [...arr]);

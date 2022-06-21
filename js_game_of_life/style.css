@@ -7,7 +7,7 @@ body{
     display: flex;
     height: 100%;
     align-items: center;
-    background-color: black;
+    background-color: white;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -18,11 +18,4 @@ canvas{
     margin: 0 auto;
     height: 80%;
     width: 50%;
-}
-
-button{
-    margin-top: 20px;
-    height: 50px;
-    width: 20%;
-    border-radius: 8px;
 }
