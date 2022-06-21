@@ -5,6 +5,15 @@ canvas.height = 1000;
 const cellSize = 10;
 const row = canvas.width / cellSize;
 
+const button = document.querySelector("button");
+
+button.addEventListener("click", ()=>{
+    let newGrid = createGrid();
+    renderGrid(newGrid);
+    requestAnimationFrame(update)
+    update();
+});
+
 function createGrid(){
     let grid = new Array(row).fill(null);
     for(let i = 0; i < row;i++){
@@ -22,7 +31,7 @@ function renderGrid(grid){
             const cell = grid[i][j];
             ctx.beginPath();
             ctx.rect(j*cellSize, i*cellSize, cellSize, cellSize);
-            ctx.fillStyle = cell ? "black" : "white";
+            ctx.fillStyle = cell ? "purple" : "white";
             ctx.fill();
             ctx.stroke();
         }
